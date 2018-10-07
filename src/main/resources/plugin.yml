@@ -1,0 +1,33 @@
+name: SurvCore
+version: ${project.version}
+main: sk.ignissak.su.survcore.Core
+authors: [iGniSsak]
+load: STARTUP
+commands:
+  sethome:
+    description: Nastavenie home
+    usage: /sethome
+  home:
+    description: Teleportace na home
+    usage: /home
+  delhome:
+    description: Vymazanie homu
+    usage: /delhome
+  gc:
+    description: Statistiky vykonu serveru
+    usage: /lag
+    aliases: [lag]
+  playtime:
+    description: Informacie o playtime
+    usage: /playtime
+    aliases: [pt]
+  ping:
+    description: Informacie o pingu
+    usage: /ping
+  overit:
+    description: Prepojenie uctov
+  odpojit:
+    description: Odpojenie uctu
+  version:
+    description: Verzia serveru
+    aliases: [verzia]

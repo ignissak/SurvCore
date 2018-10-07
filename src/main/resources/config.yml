@@ -1,0 +1,15 @@
+version: 0.1
+
+mysql:
+  host: 'localhost'
+  port: 3306
+  user: 'root'
+  database: 'database'
+  password: ''
+  minimumConnections: 2
+  maximumConnections: 5
+  timeout: 3500
+
+motd:
+  - "XD"
+  - "2"
