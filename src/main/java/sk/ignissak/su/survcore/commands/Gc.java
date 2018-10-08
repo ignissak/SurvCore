@@ -59,7 +59,7 @@ public class Gc implements CommandExecutor {
         }
         return true;
     }
-    
+
     private String formatTPS(Double s) {
         if (s >= 15.0) {
             return "§a" + s;

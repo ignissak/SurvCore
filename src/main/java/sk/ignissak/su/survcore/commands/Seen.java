@@ -41,8 +41,8 @@ public class Seen implements CommandExecutor {
                     invalidPlayer(sender);
                     return true;
                 }
-                sender.sendMessage("§fHráč §c" + args[0] + " §fbol online naposledy pred §c" + TimeUnit.MILLISECONDS.toDays(quit) + "d " + TimeUnit.MILLISECONDS.toHours(quit) % 24 + "h " +
-                        TimeUnit.MILLISECONDS.toMinutes(quit) % 24 % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(quit) % 24 % 60 % 60 + "s§f.");
+                sender.sendMessage("§fHráč §c" + args[0] + " §fbol online naposledy pred §c" + TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - quit) + "d " + TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - quit) % 24 + "h " +
+                        TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - quit) % 24 % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(quit) % 24 % 60 % 60 + "s§f.");
                 return true;
             }
         }
