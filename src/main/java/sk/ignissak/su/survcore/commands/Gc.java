@@ -24,7 +24,7 @@ public class Gc implements CommandExecutor {
             return true;
         }
         else {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             sender.sendMessage("§fAktuálne TPS: " + formatTPS(tps) + " §7(lag: " + lag + "%)");
             sender.sendMessage("§fUptime od: §a" + sdf.format(Long.valueOf(ManagementFactory.getRuntimeMXBean().getStartTime())));
             sender.sendMessage("§fMemory (max/total/free): §a" + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "§7/§a" + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "§7/§a" +
