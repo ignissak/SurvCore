@@ -3,6 +3,7 @@ package sk.ignissak.su.survcore.listeners;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import sk.ignissak.su.survcore.PlaytimeManager;
 import sk.ignissak.su.survcore.SQLManager;
@@ -23,6 +24,12 @@ public class PlayerLeave implements Listener {
 
         ptm.fetchData(p.getName());
         sql.setInventory(p, BukkitSerialization.toBase64(p.getInventory()));
+        sql.setLogQuit(p.getName(), System.currentTimeMillis());
+    }
+
+    @EventHandler
+    public void onKick(PlayerKickEvent e) {
+        Player p = (Player) e.getPlayer();
         sql.setLogQuit(p.getName(), System.currentTimeMillis());
     }
 }

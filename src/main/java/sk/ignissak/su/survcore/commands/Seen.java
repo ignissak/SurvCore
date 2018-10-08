@@ -25,7 +25,7 @@ public class Seen implements CommandExecutor {
                 invalidPlayer(sender);
                 return true;
             }
-            if (Bukkit.getPlayer(args[0]).isOnline()) { //online
+            if (Bukkit.getPlayer(args[0]) != null) { //online
                 join = sql.getLogJoinData(args[0]);
                 if (join == 0) {
                     invalidPlayer(sender);
