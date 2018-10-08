@@ -21,7 +21,7 @@ public class Playtime implements CommandExecutor {
             return true;
         }
         else {
-            if (!sender.hasPermission("admin")) {
+            if (!sender.hasPermission("management")) {
                 sender.sendMessage("§c§l(!) §cPrávo na zistenie playtime ostatných hráčov majú iba admini.");
                 return true;
             }
