@@ -27,7 +27,7 @@ public class Gc implements CommandExecutor {
         }
         else {
             Long passed;
-            passed = ManagementFactory.getRuntimeMXBean().getStartTime();
+            passed = System.currentTimeMillis() - ManagementFactory.getRuntimeMXBean().getStartTime();
             sender.sendMessage("§fAktuálne TPS: " + formatTPS(tps) + " §7(lag: " + lag + "%)");
             sender.sendMessage("§fUptime: §a" + TimeUnit.MILLISECONDS.toHours(passed) + "h " + TimeUnit.MILLISECONDS.toMinutes(passed) % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(passed) % 60 % 60 + "s");
             sender.sendMessage("§fMemory (max/total/free): §a" + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "§7/§a" + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "§7/§a" +

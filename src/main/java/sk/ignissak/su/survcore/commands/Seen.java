@@ -32,7 +32,7 @@ public class Seen implements CommandExecutor {
                     return true;
                 }
                 sender.sendMessage("§fHráč §a" + args[0] + "§f je online už po dobu §a" + TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis() - join) + "h "
-                        + TimeUnit.MILLISECONDS.toMinutes(join) % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(join) % 60 % 60 + "s§f.");
+                        + TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - join) % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - join) % 60 % 60 + "s§f.");
                 return true;
             }
             else {
@@ -41,8 +41,8 @@ public class Seen implements CommandExecutor {
                     invalidPlayer(sender);
                     return true;
                 }
-                sender.sendMessage("§fHráč §c" + args[0] + " §fbol online naposledy pred §c" + TimeUnit.MILLISECONDS.toDays(join) + "d " + TimeUnit.MILLISECONDS.toHours(join) % 24 + "h " +
-                        TimeUnit.MILLISECONDS.toMinutes(join) % 24 % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(join) % 24 % 60 % 60 + "s§f.");
+                sender.sendMessage("§fHráč §c" + args[0] + " §fbol online naposledy pred §c" + TimeUnit.MILLISECONDS.toDays(quit) + "d " + TimeUnit.MILLISECONDS.toHours(quit) % 24 + "h " +
+                        TimeUnit.MILLISECONDS.toMinutes(quit) % 24 % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(quit) % 24 % 60 % 60 + "s§f.");
                 return true;
             }
         }
