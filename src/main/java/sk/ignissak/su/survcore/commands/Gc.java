@@ -30,8 +30,8 @@ public class Gc implements CommandExecutor {
             passed = System.currentTimeMillis() - ManagementFactory.getRuntimeMXBean().getStartTime();
             sender.sendMessage("§fAktuálne TPS: " + formatTPS(tps) + " §7(lag: " + lag + "%)");
             sender.sendMessage("§fUptime: §a" + TimeUnit.MILLISECONDS.toHours(passed) + "h " + TimeUnit.MILLISECONDS.toMinutes(passed) % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(passed) % 60 % 60 + "s");
-            sender.sendMessage("§fMemory (max/total/free): §a" + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "§7/§a" + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "§7/§a" +
-                    (Runtime.getRuntime().freeMemory() / 1024 / 1024));
+            sender.sendMessage("§fMemory (max/total/free): §a" + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "MB§7/§a" + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "MB§7/§a" +
+                    (Runtime.getRuntime().freeMemory() / 1024 / 1024) + "MB");
             List<World> worlds = Bukkit.getServer().getWorlds();
             for (World w : worlds) {
                 String worldType = "World";
@@ -53,13 +53,13 @@ public class Gc implements CommandExecutor {
                 } catch (java.lang.ClassCastException ex) {
                     Bukkit.getLogger().log(Level.SEVERE, "Corrupted chunk data on world " + w, ex);
                 }
-                sender.sendMessage("§fWorld " + w.getName() + " §7(" + worldType + ")§f ma loaded chunkov §7" + w.getLoadedChunks().length + "§f, entit §7" + w.getEntities().size() + "§f a tile §7" + tileEntities);
+                sender.sendMessage("§fWorld " + w.getName() + " §7(" + worldType + ")§f má loaded chunkov §7" + w.getLoadedChunks().length + "§f, entít §7" + w.getEntities().size() + "§f a tile §7" + tileEntities);
                 //sender.sendMessage(tl("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size(), tileEntities));
             }
         }
         return true;
     }
-
+    
     private String formatTPS(Double s) {
         if (s >= 15.0) {
             return "§a" + s;
