@@ -12,41 +12,32 @@ public class PlayerJoin implements Listener {
 
     SQLManager sql = new SQLManager();
     PlaytimeManager ptm = new PlaytimeManager();
-    /*ScoreboardManager manager = Bukkit.getScoreboardManager();
-    Scoreboard board = manager.getNewScoreboard();*/
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = (Player) e.getPlayer();
 
-        /*Team nitro = board.registerNewTeam("nitro");
-        nitro.setPrefix("§3");
-        Team player = board.registerNewTeam("player");
-
-        if (API.isNitroPlayer(p)) {
-            System.out.print("Davam do nitro");
-            nitro.addPlayer(p);
-        } else if (!API.isNitroPlayer(p)) {
-            System.out.print("Davam do player");
-            player.addPlayer(p);
-        }
-        p.setScoreboard(board);*/
 
         setupTablist(p);
 
         if (!sql.hasHomeData(p)) {
-            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hrac " + p.getName() + " bol zapisany do homes database.");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hráč " + p.getName() + " bol zapísaný do home database.");
             sql.instertHomeData(p);
         }
 
         if (!sql.hasPlaytimeData(p)) {
             sql.insertPlaytimeData(p);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hrac " + p.getName() + " byl zapsan do databaze playtimu.");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hráč " + p.getName() + " bol zapísaný do playtime database.");
         }
 
         if (!sql.hasInventoryData(p)) {
             sql.insertInventoryData(p);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hrac " + p.getName() + " byl zapsan do databaze inventory.");
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hráč " + p.getName() + " bol zapísaný do inventory database.");
+        }
+
+        if (!sql.hasLogData(p.getName())) {
+            sql.insertLogData(p);
+            Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hráč " + p.getName() + " bol zapísaný do log database.");
         }
 
         if (p.hasPermission("admin")) {
@@ -58,6 +49,8 @@ public class PlayerJoin implements Listener {
         }
 
         sql.setPlaytimeJoinData(p, System.currentTimeMillis());
+        sql.setLogJoin(p.getName(), System.currentTimeMillis());
+
         int id2 = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.getInstance(), new Runnable() {
             @Override
             public void run() {
@@ -66,6 +59,7 @@ public class PlayerJoin implements Listener {
                 }
             }
         }, 0, 60 * 20);
+
     }
 
     public void setupTablist(Player p) {

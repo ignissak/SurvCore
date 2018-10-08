@@ -1,3 +1,4 @@
 .idea/
 SurvCore.iml
 dependency-reduced-pom.xml
+target/

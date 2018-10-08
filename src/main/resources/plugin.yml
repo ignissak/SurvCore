@@ -1,5 +1,5 @@
 name: SurvCore
-version: ${project.version}
+version: 1.0.6-${git.commit.id.abbrev}
 main: sk.ignissak.su.survcore.Core
 authors: [iGniSsak]
 load: STARTUP
@@ -31,3 +31,7 @@ commands:
   version:
     description: Verzia serveru
     aliases: [verzia]
+  spawn:
+    description: Spawn sveta
+  seen:
+    description: Zistenie kedy bol hrac naposledy online

@@ -92,11 +92,10 @@ public final class Core extends JavaPlugin {
         getCommand("overit").setExecutor(new Overit());
         getCommand("odpojit").setExecutor(new Odpojit());
         getCommand("version").setExecutor(new Version());
+        getCommand("seen").setExecutor(new Seen());
+        getCommand("spawn").setExecutor(new Spawn());
     }
 
-    public SQLManager getSQL() {
-        return sqlgetter;
-    }
 
 
 

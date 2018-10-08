@@ -6,6 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import sk.ignissak.su.survcore.Core;
 
 public class PlayerLoginEvent implements Listener {
 
@@ -14,7 +15,7 @@ public class PlayerLoginEvent implements Listener {
         Player p = (Player) e.getPlayer();
 
         if (!p.isWhitelisted() && !p.hasPermission("admin")) {
-            e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cNie si clen Survive Universe, nemas pristup na server.\n§7Nabor je na adrese §ahttps://goo.gl/4av9kD§7.");
+            e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cNie si clen Survive Universe, nemas pristup na server.\n§7Nabor je na adrese §a" + Core.getInstance().getConfig().getString("nabor") + "§a.");
             return;
         }
 

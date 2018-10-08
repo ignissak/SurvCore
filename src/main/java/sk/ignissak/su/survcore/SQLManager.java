@@ -407,5 +407,120 @@ public class SQLManager {
             }
     }
 
+    //LOGS
+    //todo
+
+    public boolean hasLogData(String player) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Core.getInstance().getConnection();
+            ps = conn.prepareStatement("SELECT * FROM Surv_Logs WHERE serverNick = ?;");
+            ps.setString(1, player);
+            ps.executeQuery();
+            return ps.getResultSet().next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            close(conn, ps, null);
+        }
+    }
+
+    public void insertLogData(Player player) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Connection conn = null;
+                PreparedStatement ps = null;
+                try {
+                    conn = Core.getInstance().getConnection();
+                    ps = conn.prepareStatement("INSERT INTO Surv_Logs (uuid, serverNick) VALUES (?, ?);");
+                    ps.setString(1, player.getUniqueId().toString());
+                    ps.setString(2, player.getName());
+                    ps.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    close(conn, ps, null);
+                }
+            }
+        }.runTaskAsynchronously(Core.getInstance());
+    }
+
+    public void setLogJoin(String player, Long l) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try (Connection connection = Core.getInstance().getConnection();
+             Statement statement = connection.createStatement();){
+            conn = Core.getInstance().getConnection();
+            ps = conn.prepareStatement("UPDATE Surv_Logs SET lastJoin = ? WHERE serverNick = ?;");
+            ps.setLong(1, l);
+            ps.setString(2, player);
+            ps.executeUpdate();
+            close(conn, ps, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(conn, ps, null);
+        }
+    }
+
+    public void setLogQuit(String player, Long l) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try (Connection connection = Core.getInstance().getConnection();
+             Statement statement = connection.createStatement();){
+            conn = Core.getInstance().getConnection();
+            ps = conn.prepareStatement("UPDATE Surv_Logs SET lastLogout = ? WHERE serverNick = ?;");
+            ps.setLong(1, l);
+            ps.setString(2, player);
+            ps.executeUpdate();
+            close(conn, ps, null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(conn, ps, null);
+        }
+    }
+
+    public long getLogJoinData(String player) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Core.getInstance().getConnection();
+            ps = conn.prepareStatement("SELECT lastJoin FROM Surv_Logs WHERE serverNick = ?;");
+            ps.setString(1, player);
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getLong("lastJoin");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(conn, ps, null);
+        }
+        return 0;
+    }
+
+    public long getLogQuitData(String player) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = Core.getInstance().getConnection();
+            ps = conn.prepareStatement("SELECT lastLogout FROM Surv_Logs WHERE serverNick = ?;");
+            ps.setString(1, player);
+            ps.executeQuery();
+            if (ps.getResultSet().next()) {
+                return ps.getResultSet().getLong("lastLogout");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(conn, ps, null);
+        }
+        return 0;
+    }
+
 
 }
