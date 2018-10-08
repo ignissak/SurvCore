@@ -9,8 +9,10 @@ import org.bukkit.command.CommandSender;
 import sk.ignissak.su.survcore.Lag;
 
 import java.lang.management.ManagementFactory;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 public class Gc implements CommandExecutor {
@@ -24,9 +26,10 @@ public class Gc implements CommandExecutor {
             return true;
         }
         else {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Long passed;
+            passed = ManagementFactory.getRuntimeMXBean().getStartTime();
             sender.sendMessage("§fAktuálne TPS: " + formatTPS(tps) + " §7(lag: " + lag + "%)");
-            sender.sendMessage("§fUptime od: §a" + sdf.format(Long.valueOf(ManagementFactory.getRuntimeMXBean().getStartTime())));
+            sender.sendMessage("§fUptime: §a" + TimeUnit.MILLISECONDS.toHours(passed) + "h " + TimeUnit.MILLISECONDS.toMinutes(passed) % 60 + "m " + TimeUnit.MILLISECONDS.toSeconds(passed) % 60 % 60 + "s");
             sender.sendMessage("§fMemory (max/total/free): §a" + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "§7/§a" + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "§7/§a" +
                     (Runtime.getRuntime().freeMemory() / 1024 / 1024));
             List<World> worlds = Bukkit.getServer().getWorlds();
