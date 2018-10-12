@@ -19,6 +19,11 @@ public class PlayerLoginEvent implements Listener {
             return;
         }
 
+        if (Core.getInstance().getConfig().getBoolean("maintenance") && !p.hasPermission("management")) {
+            e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cServer je momentalne v udrzbe, pripoj sa neskor.");
+            return;
+        }
+
         if (Bukkit.getServer().getOnlinePlayers().size() == 15 && !p.hasPermission("nitro")) {
             e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cServer je momentalne pristupny (5 rezervovanych slotu) jenom hracum s §3§lNITRO§c.\n§7Pro zakoupeni Nitra napis ignissovi na Discord.");
             return;

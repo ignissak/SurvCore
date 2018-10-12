@@ -15,7 +15,7 @@ motd:
   - "2"
 
 nabor: "https://bit.ly/su_nabor"
-
+maintenance: false
 season: "halloween"
 
 halloween_join:
