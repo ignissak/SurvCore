@@ -117,14 +117,14 @@ public class SQLManager {
         }
     }
 
-    public Location getHome(Player player) {
+    public Location getHome(String player) {
         Connection conn = null;
         PreparedStatement ps = null;
         Location loc = null;
         try {
             conn = Core.getInstance().getConnection();
             ps = conn.prepareStatement("SELECT * FROM Surv_Homes WHERE serverNick = ?;");
-            ps.setString(1, player.getName());
+            ps.setString(1, player);
             ps.executeQuery();
             ResultSet rs = ps.getResultSet();
             if (rs.next()) {

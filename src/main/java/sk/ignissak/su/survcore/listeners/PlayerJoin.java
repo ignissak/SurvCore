@@ -50,9 +50,9 @@ public class PlayerJoin implements Listener {
             if (p.hasPermission("admin")) {
                 e.setJoinMessage("§c" + random.replace("%player%", p.getName()));
             }
-            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            else if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
                 e.setJoinMessage("§3" + random.replace("%player%", p.getName()));
-            } else {
+            } else if (!p.hasPermission("nitro") && !p.hasPermission("admin")){
                 e.setJoinMessage("§e" + random.replace("%player%", p.getName()));
             }
         } else {

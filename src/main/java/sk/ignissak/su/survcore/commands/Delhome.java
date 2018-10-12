@@ -16,7 +16,7 @@ public class Delhome implements CommandExecutor {
         if (!(sender instanceof Player)) return true;
         Player p = (Player) sender;
         Location loc = null;
-        if (sql.getHome(p) == loc) {
+        if (sql.getHome(p.getName()) == loc) {
             p.sendMessage("§c§l(!) §cAktuálne nemáš nastavenú žiadnu home lokáciu.");
             return true;
         }

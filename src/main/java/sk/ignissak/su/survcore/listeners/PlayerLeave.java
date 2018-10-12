@@ -29,7 +29,7 @@ public class PlayerLeave implements Listener {
             if (p.hasPermission("admin")) {
                 e.setQuitMessage("§c" + random.replace("%player%", p.getName()));
             }
-            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            else if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
                 e.setQuitMessage("§3" + random.replace("%player%", p.getName()));
             } else {
                 e.setQuitMessage("§e" + random.replace("%player%", p.getName()));
