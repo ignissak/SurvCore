@@ -35,3 +35,5 @@ commands:
     description: Spawn sveta
   seen:
     description: Zistenie kedy bol hrac naposledy online
+  vanish:
+    description: Incognito pre adminov XD
