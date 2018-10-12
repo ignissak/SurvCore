@@ -6,7 +6,7 @@
 
     <groupId>sk.iGniSsak.su</groupId>
     <artifactId>SurvCore</artifactId>
-    <version>0.1.6-${git.commit.id.abbrev}</version>
+    <version>0.1.7-${git.commit.id.abbrev}</version>
     <packaging>jar</packaging>
 
     <name>SurvCore</name>

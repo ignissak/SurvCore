@@ -4,21 +4,26 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 import sk.ignissak.su.survcore.commands.*;
 import sk.ignissak.su.survcore.listeners.*;
+import sk.ignissak.su.survcore.tasks.VanishRunnable;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Core extends JavaPlugin {
 
     private static Core instance;
     public HikariDataSource hikari;
     SQLManager sql = new SQLManager();
+    public static List<Player> vanished = new ArrayList<>();
     private SQLManager sqlgetter;
 
     @Override
@@ -32,6 +37,7 @@ public final class Core extends JavaPlugin {
         instance = this;
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new VanishRunnable(), 100L, 25L);
 
         sql.createHomes();
         sql.createPlaytimeTable();
@@ -94,6 +100,18 @@ public final class Core extends JavaPlugin {
         getCommand("version").setExecutor(new Version());
         getCommand("seen").setExecutor(new Seen());
         getCommand("spawn").setExecutor(new Spawn());
+    }
+
+    public String getSeason() {
+        return getConfig().getString("season");
+    }
+
+    public List<String> halloweenJoins() {
+        return getConfig().getStringList("halloween_join");
+    }
+
+    public List<String> halloweenQuits() {
+        return getConfig().getStringList("halloween_quit");
     }
 
 

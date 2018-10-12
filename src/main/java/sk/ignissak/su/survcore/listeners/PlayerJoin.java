@@ -8,6 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import sk.ignissak.su.survcore.*;
 
+import java.util.List;
+import java.util.Random;
+
 public class PlayerJoin implements Listener {
 
     SQLManager sql = new SQLManager();
@@ -40,16 +43,35 @@ public class PlayerJoin implements Listener {
             Bukkit.getConsoleSender().sendMessage(ChatColor.YELLOW + "Hráč " + p.getName() + " bol zapísaný do log database.");
         }
 
-        if (p.hasPermission("admin")) {
-            e.setJoinMessage("§c" + p.getName() + " joined the game");
-        }
-
-        if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
-            e.setJoinMessage("§3" + p.getName() + " joined the game");
+        if (Core.getInstance().getSeason().equalsIgnoreCase("halloween")) { //hallowen update
+            Random randomizer = new Random();
+            List<String> list = Core.getInstance().halloweenJoins();
+            String random = list.get(randomizer.nextInt(list.size()));
+            if (p.hasPermission("admin")) {
+                e.setJoinMessage("§c" + random.replace("%player%", p.getName()));
+            }
+            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+                e.setJoinMessage("§3" + random.replace("%player%", p.getName()));
+            } else {
+                e.setJoinMessage("§e" + random.replace("%player%", p.getName()));
+            }
+        } else {
+            if (p.hasPermission("admin")) {
+                e.setJoinMessage("§c" + p.getName() + " joined the game");
+            }
+            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+                e.setJoinMessage("§3" + p.getName() + " joined the game");
+            }
         }
 
         sql.setPlaytimeJoinData(p, System.currentTimeMillis());
         sql.setLogJoin(p.getName(), System.currentTimeMillis());
+
+        for (Player pl : Core.vanished) {
+            for (Player pp : Bukkit.getOnlinePlayers()) {
+                pp.hidePlayer(pl);
+            }
+        }
 
         int id2 = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.getInstance(), new Runnable() {
             @Override

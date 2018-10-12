@@ -15,3 +15,15 @@ motd:
   - "2"
 
 nabor: "https://bit.ly/su_nabor"
+
+season: "halloween"
+
+halloween_join:
+  - "%player% prišiel všetkých vyspookovať!"
+  - "%player% sa pripojil a prišiel vás vystrašiť!"
+  - "%player% nezabudol na najlepší sviatok v roku, až po Vianociach, kek."
+
+halloween_quit:
+  - "%player% došli cukríky tak to už vzdal."
+  - "%player% si išiel prepúdrovať svoj halloween kostým, asi."
+  - "%player% bol strašne vyspookovaný tak zdrhol."
