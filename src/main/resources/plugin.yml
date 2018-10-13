@@ -37,3 +37,6 @@ commands:
     description: Zistenie kedy bol hrac naposledy online
   vanish:
     description: Incognito pre adminov XD
+  msg:
+    description: Sukromne spravy
+    aliases: [tell, whisper, m]
