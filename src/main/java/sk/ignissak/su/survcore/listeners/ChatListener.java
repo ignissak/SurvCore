@@ -32,12 +32,13 @@ public class ChatListener implements Listener {
             }
             e.setMessage(msg);
         }
-        if (API.isNitroPlayer(p)) {
-            e.setFormat("§3§lN §f" + p.getName() + "§7: §f" + e.getMessage());
-        }
         if (API.isAdmin(p)) {
             e.setFormat("§4§lA §f" + p.getName() + "§7: §f" + e.getMessage());
-        } else if (!API.isNitroPlayer(p) && !API.isAdmin(p)){
+        } else if (API.isManager(p)) {
+            e.setFormat("§e§lM §f" + p.getName() + "§7: §f" + e.getMessage());
+        } else if (API.isNitroPlayer(p)) {
+            e.setFormat("§3§lN §f" + p.getName() + "§7: §f" + e.getMessage());
+        } else {
             e.setFormat("§f" + p.getName() + "§7: §f" + e.getMessage());
         }
 

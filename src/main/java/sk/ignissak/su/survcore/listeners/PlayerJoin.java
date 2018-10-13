@@ -49,17 +49,19 @@ public class PlayerJoin implements Listener {
             String random = list.get(randomizer.nextInt(list.size()));
             if (p.hasPermission("admin")) {
                 e.setJoinMessage("§c" + random.replace("%player%", p.getName()));
-            }
-            else if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            } else if (p.hasPermission("management")) {
+                e.setJoinMessage("§e" + random.replace("%player%", p.getName()));
+            } else if (p.hasPermission("nitro")) {
                 e.setJoinMessage("§3" + random.replace("%player%", p.getName()));
-            } else if (!p.hasPermission("nitro") && !p.hasPermission("admin")){
+            } else {
                 e.setJoinMessage("§e" + random.replace("%player%", p.getName()));
             }
         } else {
             if (p.hasPermission("admin")) {
                 e.setJoinMessage("§c" + p.getName() + " joined the game");
-            }
-            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            } else if (p.hasPermission("management")) {
+                e.setJoinMessage("§e" + p.getName() + " joined the game");
+            } else if (p.hasPermission("nitro")) {
                 e.setJoinMessage("§3" + p.getName() + " joined the game");
             }
         }
@@ -87,6 +89,8 @@ public class PlayerJoin implements Listener {
     public void setupTablist(Player p) {
         if (p.hasPermission("admin")) {
             p.setPlayerListName("§4§lA §f" + p.getName());
+        } else if (p.hasPermission("management")) {
+            p.setPlayerListName("§e§lM §f" + p.getName());
         } else if (p.hasPermission("nitro")) {
             p.setPlayerListName("§3§lN §f" + p.getName());
         }

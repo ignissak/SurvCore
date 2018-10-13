@@ -13,4 +13,9 @@ public class API {
         if (p.hasPermission("admin")) return true;
         return false;
     }
+
+    public static boolean isManager(Player p) {
+        if (p.hasPermission("management")) return true;
+        return false;
+    }
 }
