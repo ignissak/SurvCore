@@ -16,6 +16,11 @@ public class PlayerLoginEvent implements Listener {
 
         if (!p.isWhitelisted() && !p.hasPermission("admin")) {
             e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cNie si clen Survive Universe, nemas pristup na server.\n§7Nabor je na adrese §a" + Core.getInstance().getConfig().getString("nabor") + "§a.");
+            for (Player pl : Bukkit.getOnlinePlayers()) {
+                if (pl.hasPermission("management")) {
+                    pl.sendMessage("§cHráč " + p.getName() + " sa snaží pripojiť na server, ale nie je členom.");
+                }
+            }
             return;
         }
 
@@ -25,7 +30,7 @@ public class PlayerLoginEvent implements Listener {
         }
 
         if (Bukkit.getServer().getOnlinePlayers().size() == 15 && !p.hasPermission("nitro")) {
-            e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cServer je momentalne pristupny (5 rezervovanych slotu) jenom hracum s §3§lNITRO§c.\n§7Pro zakoupeni Nitra napis ignissovi na Discord.");
+            e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cServer je momentalne pristupny (5 rezervovanych slotu) iba hracom s §3§lNITRO§c.\n§7Pre zakupenia nitra napis ignissovi na discord.");
             return;
         }
 
