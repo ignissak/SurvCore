@@ -50,7 +50,7 @@ public class PlayerJoin implements Listener {
             if (p.hasPermission("admin")) {
                 e.setJoinMessage("§c" + random.replace("%player%", p.getName()));
             } else if (p.hasPermission("management")) {
-                e.setJoinMessage("§e" + random.replace("%player%", p.getName()));
+                e.setJoinMessage("§6" + random.replace("%player%", p.getName()));
             } else if (p.hasPermission("nitro")) {
                 e.setJoinMessage("§3" + random.replace("%player%", p.getName()));
             } else {
@@ -60,7 +60,7 @@ public class PlayerJoin implements Listener {
             if (p.hasPermission("admin")) {
                 e.setJoinMessage("§c" + p.getName() + " joined the game");
             } else if (p.hasPermission("management")) {
-                e.setJoinMessage("§e" + p.getName() + " joined the game");
+                e.setJoinMessage("§6" + p.getName() + " joined the game");
             } else if (p.hasPermission("nitro")) {
                 e.setJoinMessage("§3" + p.getName() + " joined the game");
             }
@@ -90,7 +90,7 @@ public class PlayerJoin implements Listener {
         if (p.hasPermission("admin")) {
             p.setPlayerListName("§4§lA §f" + p.getName());
         } else if (p.hasPermission("management")) {
-            p.setPlayerListName("§e§lM §f" + p.getName());
+            p.setPlayerListName("§6§lM §f" + p.getName());
         } else if (p.hasPermission("nitro")) {
             p.setPlayerListName("§3§lN §f" + p.getName());
         }

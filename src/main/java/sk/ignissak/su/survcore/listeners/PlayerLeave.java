@@ -28,8 +28,9 @@ public class PlayerLeave implements Listener {
             String random = list.get(randomizer.nextInt(list.size()));
             if (p.hasPermission("admin")) {
                 e.setQuitMessage("§c" + random.replace("%player%", p.getName()));
-            }
-            else if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            } else if (p.hasPermission("management")) {
+                e.setQuitMessage("§6" + random.replace("%player%", p.getName()));
+            } else if (p.hasPermission("nitro")) {
                 e.setQuitMessage("§3" + random.replace("%player%", p.getName()));
             } else {
                 e.setQuitMessage("§e" + random.replace("%player%", p.getName()));
@@ -37,8 +38,9 @@ public class PlayerLeave implements Listener {
         } else {
             if (p.hasPermission("admin")) {
                 e.setQuitMessage("§c" + p.getName() + " left the game");
-            }
-            if (p.hasPermission("nitro") && !p.hasPermission("admin")) {
+            } else if (p.hasPermission("management")) {
+                e.setQuitMessage("§6" + p.getName() + " left the game");
+            } else if (p.hasPermission("nitro")) {
                 e.setQuitMessage("§3" + p.getName() + " left the game");
             }
         }
