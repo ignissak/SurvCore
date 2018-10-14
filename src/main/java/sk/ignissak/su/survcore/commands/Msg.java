@@ -21,6 +21,7 @@ public class Msg implements CommandExecutor {
 
             if (args[0].equalsIgnoreCase(p.getName())) {
                 p.sendMessage("§c§l(!) §cNájdi si kamarátov, aby si nemusel písať sám sebe :(");
+                return true;
             }
 
             if (Bukkit.getPlayer(args[0]) == null) {
@@ -35,8 +36,8 @@ public class Msg implements CommandExecutor {
             }
             String msg = sb.toString();
 
-            Bukkit.getPlayer(args[0]).sendMessage("§6§lMSG §f" + args[0] + " §7-> §fty_ §7| §f" + msg);
-            p.sendMessage("§6§lMSG §fty §7-> §f" + args[0] + " §7| §f" + msg);
+            Bukkit.getPlayer(args[0]).sendMessage("§6§lMSG §f" + p.getName() + " §7-> §fty §8§l| §f" + msg);
+            p.sendMessage("§6§lMSG §fty §7-> §f" + args[0] + " §8§l | §f" + msg);
 
             return true;
         } else {
