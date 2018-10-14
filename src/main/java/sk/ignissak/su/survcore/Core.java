@@ -102,6 +102,7 @@ public final class Core extends JavaPlugin {
         getCommand("seen").setExecutor(new Seen());
         getCommand("spawn").setExecutor(new Spawn());
         getCommand("msg").setExecutor(new Msg());
+        getCommand("su").setExecutor(new Su());
     }
 
     public String getSeason() {

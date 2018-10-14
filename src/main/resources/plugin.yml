@@ -4,6 +4,9 @@ main: sk.ignissak.su.survcore.Core
 authors: [iGniSsak]
 load: STARTUP
 commands:
+  su:
+    description: Hlavny prikaz
+    usage: /su
   sethome:
     description: Nastavenie home
     usage: /sethome
