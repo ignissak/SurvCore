@@ -21,5 +21,7 @@ public class SurvPlayer {
         return deaths;
     }
 
-
+    public void setDeaths(int deaths) {
+        this.deaths = deaths;
+    }
 }

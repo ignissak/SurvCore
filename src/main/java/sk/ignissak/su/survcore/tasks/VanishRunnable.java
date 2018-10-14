@@ -12,7 +12,7 @@ public class VanishRunnable implements Runnable {
     public void run() {
         if (Core.vanished.isEmpty()) return;
         for (Player p : Core.vanished) {
-            a.sendActionBar(p, "§c§lSI VO VANISHI");
+            a.sendActionBar(p, "§c§lVANISHED");
         }
     }
 }

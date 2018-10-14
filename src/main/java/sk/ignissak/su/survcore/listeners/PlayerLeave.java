@@ -53,6 +53,9 @@ public class PlayerLeave implements Listener {
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         Player p = (Player) e.getPlayer();
+
+        ptm.fetchData(p.getName());
+        sql.setInventory(p, BukkitSerialization.toBase64(p.getInventory()));
         sql.setLogQuit(p.getName(), System.currentTimeMillis());
     }
 }
