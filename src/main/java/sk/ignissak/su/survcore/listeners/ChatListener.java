@@ -35,7 +35,7 @@ public class ChatListener implements Listener {
         if (API.isAdmin(p)) {
             e.setFormat("§4§lA §f" + p.getName() + "§7: §f%2$s" );
         } else if (API.isManager(p)) {
-            e.setFormat("§e§lM §f" + p.getName() + "§7: §f%2$s");
+            e.setFormat("§6§lM §f" + p.getName() + "§7: §f%2$s");
         } else if (API.isNitroPlayer(p)) {
             e.setFormat("§3§lN §f" + p.getName() + "§7: §f%2$s");
         } else {
