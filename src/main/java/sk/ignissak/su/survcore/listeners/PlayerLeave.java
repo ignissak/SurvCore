@@ -15,7 +15,6 @@ import java.util.Random;
 
 public class PlayerLeave implements Listener {
 
-    PlaytimeManager ptm = new PlaytimeManager();
     SQLManager sql = new SQLManager();
 
     @EventHandler
@@ -45,7 +44,7 @@ public class PlayerLeave implements Listener {
             }
         }
 
-        ptm.fetchData(p.getName());
+        new PlaytimeManager(p);
         sql.setInventory(p, BukkitSerialization.toBase64(p.getInventory()));
         sql.setLogQuit(p.getName(), System.currentTimeMillis());
     }
@@ -54,7 +53,7 @@ public class PlayerLeave implements Listener {
     public void onKick(PlayerKickEvent e) {
         Player p = (Player) e.getPlayer();
 
-        ptm.fetchData(p.getName());
+        new PlaytimeManager(p);
         sql.setInventory(p, BukkitSerialization.toBase64(p.getInventory()));
         sql.setLogQuit(p.getName(), System.currentTimeMillis());
     }
