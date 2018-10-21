@@ -38,6 +38,7 @@ public final class Core extends JavaPlugin {
 
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
         Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new VanishRunnable(), 100L, 25L);
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new PlaytimeRunnable(), 100L, 60L*20L);
 
         sql.createHomes();
         sql.createPlaytimeTable();

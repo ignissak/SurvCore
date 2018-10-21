@@ -14,7 +14,6 @@ import java.util.Random;
 public class PlayerJoin implements Listener {
 
     SQLManager sql = new SQLManager();
-    PlaytimeManager ptm = new PlaytimeManager();
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
@@ -74,15 +73,6 @@ public class PlayerJoin implements Listener {
                 pp.hidePlayer(pl);
             }
         }
-
-        int id2 = Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(Core.getInstance(), new Runnable() {
-            @Override
-            public void run() {
-                if (p.isOnline()) {
-                    ptm.fetchData(p.getName());
-                }
-            }
-        }, 0, 60 * 20);
 
     }
 
