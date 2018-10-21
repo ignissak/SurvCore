@@ -1,8 +1,10 @@
 package sk.ignissak.su.survcore.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import sk.ignissak.su.survcore.SQLManager;
 
 import java.util.concurrent.TimeUnit;
@@ -17,7 +19,8 @@ public class Playtime implements CommandExecutor {
         Long hodky = TimeUnit.MILLISECONDS.toHours(playTime);
         Long minutky = TimeUnit.MILLISECONDS.toMinutes(playTime) % 60;
         if (args.length == 0) {
-            sender.sendMessage("§fTvoj playtime: §a" + hodky + "h§f a §a" + minutky + "m");
+            Player p = (Player) sender;
+            sender.sendMessage("§fTvoj playtime je §a" + hodky + "h§f a §a" + minutky + "m§f. §7(#" + sql.getTopPlaytime(p) + ")");
             return true;
         }
         else {
@@ -33,7 +36,7 @@ public class Playtime implements CommandExecutor {
             long playtime = sql.getPlaytimeData(args[0]);
             long hodkyy = TimeUnit.MILLISECONDS.toHours(playtime);
             long minutkyy = TimeUnit.MILLISECONDS.toMinutes(playtime) % 60;
-            sender.sendMessage("§aPlaytime hráča §2" + args[0] + "§a: §2" + hodkyy + "h a " + minutkyy + "m§a.");
+            sender.sendMessage("§fPlaytime hráča §2" + args[0] + "§f je §2" + hodkyy + "h §fa§a " + minutkyy + "m§f. §7(#" + sql.getTopPlaytime(Bukkit.getPlayer(args[0])) + ")");
             return true;
         }
 
