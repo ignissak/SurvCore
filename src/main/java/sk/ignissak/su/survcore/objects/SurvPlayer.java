@@ -7,6 +7,9 @@ public class SurvPlayer {
     private Player p;
     private int deaths;
 
+    public SurvPlayer(Player p) {
+        this.p = p;
+    }
 
     public SurvPlayer(Player p, int deaths) {
         this.p = p;

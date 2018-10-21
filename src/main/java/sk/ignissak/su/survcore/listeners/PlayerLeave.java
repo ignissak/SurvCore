@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import sk.ignissak.su.survcore.Core;
 import sk.ignissak.su.survcore.PlaytimeManager;
 import sk.ignissak.su.survcore.SQLManager;
+import sk.ignissak.su.survcore.objects.Inventar;
 import sk.ignissak.su.survcore.utils.BukkitSerialization;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public class PlayerLeave implements Listener {
         }
 
         new PlaytimeManager(p);
-        sql.setInventory(p, BukkitSerialization.toBase64(p.getInventory()));
+        new Inventar(p);
         sql.setLogQuit(p.getName(), System.currentTimeMillis());
     }
 
