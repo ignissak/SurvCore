@@ -18,7 +18,7 @@ public class PlayerLoginEvent implements Listener {
             e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_OTHER, "§cNie si clen Survive Universe, nemas pristup na server.\n§7Nabor je na adrese §a" + Core.getInstance().getConfig().getString("nabor") + "§a.");
             for (Player pl : Bukkit.getOnlinePlayers()) {
                 if (pl.hasPermission("management")) {
-                    pl.sendMessage("§cHráč " + p.getName() + " sa snaží pripojiť na server, ale nie je členom.");
+                    pl.sendMessage("§c§l(!) §cHráč §4" + p.getName() + "§c sa snaží pripojiť na server, ale nie je členom.");
                 }
             }
             return;

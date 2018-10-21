@@ -10,10 +10,10 @@ public class Version implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        sender.sendMessage("§fServer beží na §7" + Bukkit.getName());
-        sender.sendMessage("§fVerzia: §7" + Bukkit.getVersion());
-        sender.sendMessage("§fAPI verzia: §7" + Bukkit.getBukkitVersion());
-        sender.sendMessage("§fVerzia pluginu: §7" + Core.getInstance().getDescription().getVersion());
+        sender.sendMessage("§fServer beží na §e" + Bukkit.getName());
+        sender.sendMessage("§fVerzia: §e" + Bukkit.getVersion());
+        sender.sendMessage("§fAPI verzia: §e" + Bukkit.getBukkitVersion());
+        sender.sendMessage("§fVerzia pluginu: §6" + Core.getInstance().getDescription().getVersion());
         return true;
     }
 }
