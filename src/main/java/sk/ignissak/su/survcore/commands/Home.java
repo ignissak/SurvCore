@@ -2,6 +2,8 @@ package sk.ignissak.su.survcore.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,6 +27,9 @@ public class Home implements CommandExecutor {
             }
             p.teleport(sql.getHome(p.getName()));
             p.sendMessage("§aTeleportácia na home lokáciu...");
+            p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1.0F, 2.0F);
+            p.getLocation().getWorld().spawnParticle(Particle.SMOKE_NORMAL, p.getLocation(), 50, 0, 0, 0);
+            p.getLocation().getWorld().spawnParticle(Particle.FLAME, p.getLocation(), 10, 0, 0, 0);
             return true;
         }
         if (args.length == 1) {
@@ -38,6 +43,9 @@ public class Home implements CommandExecutor {
             }
             p.teleport(sql.getHome(args[0]));
             p.sendMessage("§aTeleportácia na home lokáciu hráča " + args[0] + "...");
+            p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1.0F, 2.0F);
+            p.getLocation().getWorld().spawnParticle(Particle.SMOKE_NORMAL, p.getLocation(), 50, 0, 0, 0);
+            p.getLocation().getWorld().spawnParticle(Particle.FLAME, p.getLocation(), 10, 0, 0, 0);
             return true;
         }
         return true;

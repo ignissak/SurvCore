@@ -1,5 +1,8 @@
 package sk.ignissak.su.survcore.commands;
 
+import net.minecraft.server.v1_13_R2.PacketPlayOutWorldParticles;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,6 +22,9 @@ public class Spawn implements CommandExecutor {
 
         p.teleport(p.getWorld().getSpawnLocation());
         p.sendMessage("§aWhoosh!");
+        p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1.0F, 2.0F);
+        p.getLocation().getWorld().spawnParticle(Particle.SMOKE_NORMAL, p.getLocation(), 50, 0, 0, 0);
+        p.getLocation().getWorld().spawnParticle(Particle.FLAME, p.getLocation(), 10, 0, 0, 0);
 
         return true;
     }

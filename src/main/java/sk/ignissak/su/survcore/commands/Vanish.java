@@ -30,7 +30,9 @@ public class Vanish implements CommandExecutor {
             Core.vanished.add(p);
             p.sendMessage("§fVanish: §aON");
             for (Player pl : Bukkit.getOnlinePlayers()) {
-                pl.hidePlayer(Core.getInstance(), p);
+                if (!pl.hasPermission("admin")) {
+                    pl.hidePlayer(Core.getInstance(), p);
+                }
             }
             return true;
         }

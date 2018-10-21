@@ -1,5 +1,5 @@
 name: SurvCore
-version: 1.0.7-${git.commit.id.abbrev}
+version: 1.1.0-${git.commit.id.abbrev}
 main: sk.ignissak.su.survcore.Core
 authors: [iGniSsak]
 load: STARTUP
