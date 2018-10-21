@@ -30,6 +30,18 @@ public class ChatListener implements Listener {
             if(msg.contains(":cry:")){
                 msg = msg.replace(":cry:", "(ಥ﹏ಥ)");
             }
+            if (msg.contains("o/")) {
+                msg = msg.replace("o/", "( ﾟ◡ﾟ)/");
+            }
+            if (msg.contains(":*")) {
+                msg = msg.replace(":*", "(づ￣ ³￣)づ");
+            }
+            if (msg.contains(":pls:")) {
+                msg = msg.replace(":pls:", "(づ｡◕‿‿◕｡)づ");
+            }
+            if (msg.contains(":star:")) {
+                msg = msg.replace(":star:", "✮");
+            }
             e.setMessage(msg);
         }
         if (API.isAdmin(p)) {

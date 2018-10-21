@@ -34,7 +34,7 @@ public class PlayerLoginEvent implements Listener {
             return;
         }
 
-        if (Bukkit.getServer().getOnlinePlayers().size() == 20) {
+        else if (Bukkit.getServer().getOnlinePlayers().size() == 20) {
             e.disallow(org.bukkit.event.player.PlayerLoginEvent.Result.KICK_FULL, "§cServer je momentalne plny.");
             return;
         }
