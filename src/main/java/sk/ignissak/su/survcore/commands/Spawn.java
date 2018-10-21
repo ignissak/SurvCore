@@ -23,8 +23,8 @@ public class Spawn implements CommandExecutor {
         p.teleport(p.getWorld().getSpawnLocation());
         p.sendMessage("§aWhoosh!");
         p.playSound(p.getLocation(), Sound.BLOCK_DISPENSER_DISPENSE, 1.0F, 2.0F);
-        p.getLocation().getWorld().spawnParticle(Particle.SMOKE_NORMAL, p.getLocation(), 10, 0, 0, 0, 0.05);
-        p.getLocation().getWorld().spawnParticle(Particle.DRAGON_BREATH, p.getLocation(), 1000, 0.5, 0.1, 0.5,0.01);
+        //p.getLocation().getWorld().spawnParticle(Particle.SMOKE_NORMAL, p.getLocation(), 10, 0, 0, 0, 0.05);
+        p.getLocation().getWorld().spawnParticle(Particle.DRAGON_BREATH, p.getLocation(), 100, 0.5, 1, 0.5,0.01);
 
         return true;
     }
