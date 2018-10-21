@@ -70,7 +70,9 @@ public class PlayerJoin implements Listener {
 
         for (Player pl : Core.vanished) {
             for (Player pp : Bukkit.getOnlinePlayers()) {
-                pp.hidePlayer(pl);
+                if (!pp.hasPermission("admin")) {
+                    pp.hidePlayer(Core.getInstance(), pl);
+                }
             }
         }
 

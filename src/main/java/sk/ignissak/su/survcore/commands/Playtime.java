@@ -36,7 +36,7 @@ public class Playtime implements CommandExecutor {
             long playtime = sql.getPlaytimeData(args[0]);
             long hodkyy = TimeUnit.MILLISECONDS.toHours(playtime);
             long minutkyy = TimeUnit.MILLISECONDS.toMinutes(playtime) % 60;
-            sender.sendMessage("§fPlaytime hráča §2" + args[0] + "§f je §2" + hodkyy + "h §fa§a " + minutkyy + "m§f. §7(#" + sql.getTopPlaytime(Bukkit.getPlayer(args[0])) + ")");
+            sender.sendMessage("§fPlaytime hráča §2" + args[0] + "§f je §a" + hodkyy + "h §fa§a " + minutkyy + "m§f. §7(#" + sql.getTopPlaytime(Bukkit.getPlayer(args[0])) + ")");
             return true;
         }
 
