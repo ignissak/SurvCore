@@ -522,14 +522,14 @@ public class SQLManager {
         return 0;
     }
 
-    public int getTopPlaytime(Player p) {
+    public int getTopPlaytime(String p) {
         //SELECT count( * ) AS number FROM `Playtime` WHERE `playTime` >= ( SELECT `playTime` FROM `Playtime` t2 WHERE `serverNick` = 'iGniSsak')
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = Core.getInstance().getConnection();
             ps = conn.prepareStatement("SELECT count( * ) AS number FROM `Playtime` WHERE `playTime` >= ( SELECT `playTime` FROM `Playtime` t2 WHERE `serverNick` = ?)");
-            ps.setString(1, p.getName());
+            ps.setString(1, p);
             ps.executeQuery();
             if (ps.getResultSet().next()) {
                 return ps.getResultSet().getInt("number");
