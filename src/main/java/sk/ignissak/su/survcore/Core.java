@@ -104,6 +104,7 @@ public final class Core extends JavaPlugin {
         getCommand("spawn").setExecutor(new Spawn());
         getCommand("msg").setExecutor(new Msg());
         getCommand("su").setExecutor(new Su());
+        getCommand("maintenance").setExecutor(new Maintenance());
     }
 
     public String getSeason() {
@@ -118,7 +119,12 @@ public final class Core extends JavaPlugin {
         return getConfig().getStringList("halloween_quit");
     }
 
+    public void turnOffMaintenance() {
+        getConfig().set("maintenance", false);
+    }
 
-
+    public void turnOnMaintenanace() {
+        getConfig().set("maintenance", true);
+    }
 
 }

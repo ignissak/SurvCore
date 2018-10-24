@@ -43,3 +43,5 @@ commands:
   msg:
     description: Sukromne spravy
     aliases: [tell, whisper, m]
+  maintenance:
+    description: Udrzba
